@@ -5,26 +5,42 @@
                 <span>Avei's Todos</span>
             </div>
             <div class="w-100">
-                <VAutocomplete 
+                <VAutocomplete
                     variant="outlined"
                     density="comfortable"
-                    :items="projectStore.projectList" 
-                    placeholder="Select the Project">
+                    :items="projectStore.projectList"
+                    placeholder="Select the Project"
+                >
                     <template v-slot:append>
-                        <VIcon icon="mdi-plus" color="primary" @click="projectStore.mutateCreateDialog"/>
+                        <VIcon
+                            icon="mdi-plus"
+                            color="primary"
+                            @click="projectStore.mutateCreateDialog"
+                        />
                     </template>
                 </VAutocomplete>
             </div>
         </VCardTitle>
-        <VCardText></VCardText>
+        <VCardText class="h-100">
+            <VCheckbox label="Title" />
+            <VFab
+                class="ma-4"
+                location="bottom right"
+                icon="mdi-plus"
+                @click="todoStore.mutateCreateDialog"
+                absolute
+                offset
+            />
+        </VCardText>
     </VCard>
-    <Create/>
+    <ProjectsCreate />
 </template>
 
 <script setup lang="ts">
-const projectStore = useProjectStore()
+const projectStore = useProjectStore();
+const todoStore = useTodoStore();
 
 onMounted(async () => {
-    await projectStore.fetchProjectList()
-})
+    await projectStore.fetchProjectList();
+});
 </script>

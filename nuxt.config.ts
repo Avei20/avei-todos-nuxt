@@ -47,5 +47,7 @@ export default defineNuxtConfig({
     timeline: {
       enabled: true
     }
-  }
+  },
+
+  compatibilityDate: '2024-07-14'
 })
