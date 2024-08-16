@@ -14,6 +14,11 @@ export default defineNuxtPlugin((app) => {
                 }
               }
             }
+        },
+        defaults: {
+          VCheckbox: {
+            class: [],
+          }
         }
     })
     app.vueApp.use(vuetify)
